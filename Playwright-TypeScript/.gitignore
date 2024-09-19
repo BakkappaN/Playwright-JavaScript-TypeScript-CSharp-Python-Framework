@@ -3,3 +3,5 @@
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/e2e-junit-results.xml
+/Test_Case_Status.xlsx

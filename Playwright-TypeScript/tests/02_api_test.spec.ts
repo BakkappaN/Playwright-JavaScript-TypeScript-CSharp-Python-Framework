@@ -1,0 +1,86 @@
+import { test, expect } from "@playwright/test";
+import postRequest from "../src/test-data/api-requests/post_request_body.json";
+import tokenRequest from "../src/test-data/api-requests/token_request_body.json";
+import { json } from "stream/consumers";
+
+import * as path from 'path';
+import dotenv from 'dotenv';
+dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+let baseURL : string;
+
+test.use({
+  baseURL: process.env.API_BASE_URI,
+})
+
+/**
+ * Bakkappa N
+ */
+test("End to End API testing using playwright", { tag: '@APITest' }, async ({ request }) => {
+
+  let tokenNo = null;
+
+  const postAPIResponse = await test.step('Create booking', async () => {
+    return await request.post("/booking", {
+      data: postRequest,
+    });
+  });
+
+  const bookingId = await postAPIResponse.json();
+  const bId = bookingId.bookingid;
+
+  let getAPIResponse = await test.step('Get booking details', async () => {
+    return await request.get("/booking/", {
+      params: {
+        firstname: "testers talk playwright",
+        lastname: "testers talk api testing",
+      },
+    });
+  });
+
+  await test.step('Validate status code', async () => {
+    console.log(await getAPIResponse.json());
+    expect(getAPIResponse.ok()).toBeTruthy();
+    expect(getAPIResponse.status()).toBe(200);
+  });
+
+  const tokenAPIResponse = await test.step('Generate token & Validate status code', async () => {
+    return await request.post("/auth", {
+      data: tokenRequest,
+    });
+    expect(tokenAPIResponse.ok()).toBeTruthy();
+    expect(tokenAPIResponse.status()).toBe(200);
+
+    console.log(await tokenAPIResponse.json());
+    const tokenResponseBody = await tokenAPIResponse.json();
+    tokenNo = tokenResponseBody.token;
+  });
+
+  const patchAPIResponse = await test.step('Partial update booking details & Validate status code', async () => {
+    return await request.patch(`/booking/${bId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: `token=${tokenNo}`,
+      },
+      data: {
+        firstname: "testers talk postman",
+        lastname: "testers talk rest assured",
+      },
+    });
+
+    console.log(await patchAPIResponse.json());
+    expect(patchAPIResponse.ok()).toBeTruthy();
+    expect(patchAPIResponse.status()).toBe(200);
+  });
+
+  const deleteAPIResponse = await test.step('Delete booking & Validate status code', async () => {
+    return await request.delete(`/booking/${bId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Cookie": `token=${tokenNo}`,
+      },
+    });
+    expect(deleteAPIResponse.status()).toBe(201);
+    expect(deleteAPIResponse.statusText()).toBe("Created");
+  });
+});
