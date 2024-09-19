@@ -1,0 +1,34 @@
+{
+  "name": "playwrightbaseautomationframework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tests": "npx playwright test",
+    "ParaBank:Tests": "npx playwright test --grep ParaBankTest",
+    "SQLDB:Tests": "npx playwright test --grep SQLDataBaseTest",
+    "MongoDB:Tests": "npx playwright test --grep MongoDBTest",
+    "UI:Tests": "npx playwright test --grep UITest",
+    "API:Tests": "npx playwright test --grep APITest",
+    "Mobile:Tests": "npx playwright test --grep MobileTest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.0",
+    "@playwright/test": "^1.46.1",
+    "@types/node": "^20.11.16"
+  },
+  "dependencies": {
+    "@azure/identity": "^4.4.0",
+    "@azure/keyvault-secrets": "^4.8.0",
+    "csv-parse": "^5.5.3",
+    "dotenv": "^16.4.5",
+    "luxon": "^3.4.4",
+    "mongodb": "^6.8.1",
+    "mysql2": "^3.11.0",
+    "otplib": "^12.0.1",
+    "xlsx": "^0.18.5"
+  }
+}

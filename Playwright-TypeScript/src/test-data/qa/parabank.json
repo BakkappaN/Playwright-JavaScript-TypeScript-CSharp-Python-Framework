@@ -1,0 +1,14 @@
+{
+  "pbanktestdata": {
+    "firstname": "Testers",
+    "lastname": "Talk",
+    "city": "San Jose",
+    "address": "address1",
+    "state": "California",
+    "zipcode": "12345",
+    "phonenumber": "1234567898",
+    "ssn": "1234512345",
+    "password": "1234567891",
+    "savings": "SAVINGS"
+  }
+}

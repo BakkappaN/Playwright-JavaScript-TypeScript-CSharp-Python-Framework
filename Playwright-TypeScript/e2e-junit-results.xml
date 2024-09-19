@@ -1,0 +1,53 @@
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="29.384553">
+<testsuite name="01_ui_test.spec.ts" timestamp="2024-09-19T17:32:56.995Z" hostname="chromium" tests="2" failures="0" skipped="0" time="27.542" errors="0">
+<testcase name="[2] UI automation test using playwright" classname="01_ui_test.spec.ts" time="25.632">
+<system-out>
+<![CDATA[Playwright by Testers Talk
+Global afterEach is running...
+
+[[ATTACHMENT|test-results\01_ui_test--2-UI-automation-test-using-playwright-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="[9, 12, 14] Verify excel data using playwright" classname="01_ui_test.spec.ts" time="1.91">
+<system-out>
+<![CDATA[Name : Testers Talk 1
+Skill1 : Playwright
+Skill2 : Cypress
+Skill3 : Postman Selenium WebDriver
+Skill4 : Rest Assured
+Skill5 : Appium
+Skill6 : Manual Testing
+Skill7 : Specflow Selenium C#
+Skill8 : EasyRepro
+Skill9 : Selenium C#
+Skill10 : Cucumber
+Skill11 : TestNG
+Skill12 : Nunit
+Skill13 : GIT
+Skill14 : Azure DevOps
+=======
+Name : Testers Talk 2
+Skill1 : Playwright
+Skill2 : Cypress
+Skill3 : Postman Selenium WebDriver
+Skill4 : Rest Assured
+Skill5 : Appium
+Skill6 : Manual Testing
+Skill7 : Specflow Selenium C#
+Skill8 : EasyRepro
+Skill9 : Selenium C#
+Skill10 : Cucumber
+Skill11 : TestNG
+Skill12 : Nunit
+Skill13 : GIT
+Skill14 : Azure DevOps
+=======
+Global afterEach is running...
+
+[[ATTACHMENT|test-results\01_ui_test--9-12-14-Verify-excel-data-using-playwright-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
