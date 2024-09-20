@@ -3,40 +3,30 @@ import { expect } from '@playwright/test';
 
 import * as path from 'path';
 import xlsx from 'xlsx';
-import BaseTest from '../src/utils/basetest';
-
-import { HomePage } from '../src/pages/homepage';
-import { ResultPage } from '../src/pages/resultpage';
-import { PlaylistPage } from '../src/pages/playlistpage';
 
 import dotenv from 'dotenv';
-dotenv.config({ path: path.resolve(__dirname, '.env') });
+dotenv.config();
 
 /**
  * Bakkappa N
  */
-test('[2] UI automation test using playwright', { tag: '@UITest' }, async ({ page }) => {
-
-    const baseTest = new BaseTest(page);
-    const homepage = new HomePage(page);
-    const resultpage = new ResultPage(page);
-    const playlistpage = new PlaylistPage(page);
+test('[2] UI automation test using playwright', { tag: '@UITest' }, async ({ page, baseTest, homePage, resultPage, playlistPage }) => {
 
     await test.step('Go to URL', async () => {
         await baseTest.goto();
     });
 
     await test.step('Search with keywords', async () => {
-        await homepage.searchKeywords(String(baseTest.testData.module1.skill1));
+        await homePage.searchKeywords(String(baseTest.testData.module1.skill1));
     });
 
     await test.step('Click on playlist', async () => {
-        await resultpage.clickOnPlaylist();
+        await resultPage.clickOnPlaylist();
         await page.waitForTimeout(4000);
     });
 
     await test.step('Click on video', async () => {
-        await playlistpage.clickOnVideo();
+        await playlistPage.clickOnVideo();
         await page.waitForTimeout(8000);
     });
 })

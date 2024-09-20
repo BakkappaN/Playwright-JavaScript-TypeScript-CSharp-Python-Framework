@@ -2,10 +2,20 @@ import * as debug from 'debug';
 import * as fs from 'fs';
 import { test as base } from '@playwright/test';
 import { writeTestStatusToExcelFile } from '../utils/excelhandler';
+import { HomePage } from '../pages/homepage';
+import { PlaylistPage } from '../pages/playlistpage';
+import { ResultPage } from '../pages/resultpage';
+import BaseTest from '../utils/basetest';
 
 
-export const test = base.extend<{ saveLogs: void }>({
-  saveLogs: [async ({}, use, testInfo) => {
+export const test = base.extend<{
+  saveLogs: void;
+  homePage: HomePage;
+  playlistPage: PlaylistPage;
+  resultPage: ResultPage;
+  baseTest: BaseTest;
+}>({
+  saveLogs: [async ({ }, use, testInfo) => {
     // Collecting logs during the test.
     // const logs: string[] = [];
     // debug.log = (...args: any[]) => logs.push(args.map(String).join(''));
@@ -23,6 +33,24 @@ export const test = base.extend<{ saveLogs: void }>({
     console.log('Global afterEach is running...');
     await writeTestStatusToExcelFile(testInfo);
   }, { auto: true }],
+
+  homePage: async ({ page }, use) => {
+    const homePage = new HomePage(page);
+    await use(homePage);
+  },
+  playlistPage: async ({ page }, use) => {
+    const playlistPage = new PlaylistPage(page);
+    await use(playlistPage);
+  },
+  resultPage: async ({ page }, use) => {
+    const resultPage = new ResultPage(page);
+    await use(resultPage);
+  },
+  baseTest: async ({ page }, use) => {
+    const baseTest = new BaseTest(page);
+    await use(baseTest);
+  }
+
 });
 
 export { expect } from '@playwright/test';

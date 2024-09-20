@@ -1,11 +1,9 @@
 import { test, expect } from "@playwright/test";
 import postRequest from "../src/test-data/api-requests/post_request_body.json";
 import tokenRequest from "../src/test-data/api-requests/token_request_body.json";
-import { json } from "stream/consumers";
 
-import * as path from 'path';
 import dotenv from 'dotenv';
-dotenv.config({ path: path.resolve(__dirname, '.env') });
+dotenv.config();
 
 let baseURL : string;
 
