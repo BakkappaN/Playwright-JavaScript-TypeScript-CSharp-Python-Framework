@@ -1,18 +1,7 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
 const path = require('path');
-
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
 require('dotenv').config({ path: path.resolve(__dirname, '.env') });
-
-// Read environment variables from file.
-//require('dotenv').config();
-
-// import dotenv from 'dotenv';
-// dotenv.config();
 
 /**
  * @see more at https://bit.ly/playwright-tutorial-automation-testing
@@ -36,9 +25,11 @@ module.exports = defineConfig({
   workers: process.env.CI ? 1 : 1,
   // Reporter
   reporter: [
+    [`./custom_report.js`, { customOption: 'Logs' }],
     ['html', { open: 'never' }],
     // ['allure-playwright'],
     ['junit', { outputFile: './e2e-junit-results.xml' }],
+    
   ],
 
   use: {
