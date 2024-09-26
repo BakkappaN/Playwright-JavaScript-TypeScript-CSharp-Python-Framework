@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "playwright test",
-    "lint": "eslint 'tests/**/*.{js,ts}'",
-    "lint:fix": "eslint 'tests/**/*.{js,ts}' --fix"
+    "test": "playwright test"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +16,7 @@
     "@playwright/test": "^1.47.1",
     "@types/debug": "^4.1.12",
     "@types/node": "^22.5.5",
+    "@types/winston": "^2.4.4",
     "@types/xlsx": "^0.0.36",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.1.0",
@@ -28,6 +27,7 @@
   },
   "dependencies": {
     "dotenv": "^16.4.5",
+    "winston": "^3.14.2",
     "xlsx": "^0.18.5"
   }
 }
