@@ -8,7 +8,7 @@ exports.HomePage = class HomePage {
      * 
      * @param {import ('@playwright/test').Page} page 
      */
-    constructor(page){
+    constructor(page) {
         // Init page object
         this.page = page;
 
@@ -16,16 +16,19 @@ exports.HomePage = class HomePage {
         this.searchTextbox = page.locator('#APjFqb');
     }
 
-    async goto(){
-        await this.page.setViewportSize({width:1366, height:728})
-        await this.page.goto('https://www.google.com');
+    async goto() {
+        await this.page.setViewportSize({ width: 1366, height: 728 })
+        if (process.env.ENV.toUpperCase == 'QA') {
+            await this.page.goto(process.env.QA_URL);
+        } if (process.env.ENV.toUpperCase == 'STAGE') {
+            await this.page.goto(process.env.STAGING_URL);
+        }
     }
 
-    async searchKeywords(param1){
+    async searchKeywords(param1) {
         await expect(this.searchTextbox).toBeEnabled();
         await this.searchTextbox.click();
         await this.searchTextbox.fill(param1);
         await this.searchTextbox.press('Enter');
     }
-
 }

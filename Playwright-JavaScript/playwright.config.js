@@ -8,12 +8,11 @@ require('dotenv').config({ path: path.resolve(__dirname, '.env') });
  */
 module.exports = defineConfig({
   // test timeout
-  timeout: 3 * 60 * 1000,
+  timeout: 2 * 60 * 1000,
   expect: {
-    timeout: 90000
+    timeout: 40000
   },
-  //testDir: './tests',
-  testDir: './tests-e2e',
+  testDir: './tests',
 
   /* Run tests in files in parallel */
   fullyParallel: false,
@@ -29,7 +28,7 @@ module.exports = defineConfig({
     ['html', { open: 'never' }],
     // ['allure-playwright'],
     ['junit', { outputFile: './e2e-junit-results.xml' }],
-    
+
   ],
 
   use: {
@@ -50,8 +49,8 @@ module.exports = defineConfig({
 
     // Collect trace when retrying the failed test
     trace: 'off',
-    actionTimeout: 90 * 1000,
-    navigationTimeout: 90 * 1000,
+    actionTimeout: 60 * 1000,
+    navigationTimeout: 60 * 1000,
   },
 
   globalSetup: require.resolve('./globals/global-setup'),

@@ -1,42 +1,44 @@
-const debug = require('debug');
-const fs = require('fs');
 const { test: base, expect } = require('@playwright/test');
 
 import { writeTestStatusToExcelFile } from '../utils/excelhandler';
 
-const { RegistrationPage } = require('../pages/registrationpage');
-const { LoginPage } = require('../pages/loginpage');
-const { ParaBankHomePage } = require('../pages/parabankhomepage');
-const { OpenNewAccountPage } = require('../pages/opennewaccountpage');
+const { HomePage } = require('../pages/homepage');
+const { ResultPage } = require('../pages/resultpage');
+const { PlaylistPage } = require('../pages/playlistpage');
+
+import { loadTestData } from '../utils/jsonhandler';
+
+import Logger from "../utils/logger";
 
 // Extend the base test to include a custom fixture
 const test = base.extend({
-
-  registrationPage: async ({ page }, use) => {
-    const registrationPage = new RegistrationPage(page);
-    await use(registrationPage);
+  testData: async ({ }, use) => {
+    const data = await loadTestData();
+    await use(data);
   },
-  loginPage: async ({ page }, use) => {
-    const loginPage = new LoginPage(page);
-    await use(loginPage);
+  homePage: async ({ page }, use) => {
+    const homePage = new HomePage(page);
+    await use(homePage);
   },
-  paraBankHomePage: async ({ page }, use) => {
-    const paraBankHomePage = new ParaBankHomePage(page);
-    await use(paraBankHomePage);
+  resultPage: async ({ page, testData }, use) => {
+    const resultPage = new ResultPage(page, testData);
+    await use(resultPage);
   },
-  openNewAccountPage: async ({ page }, use) => {
-    const openNewAccountPage = new OpenNewAccountPage(page);
-    await use(openNewAccountPage);
+  playlistPage: async ({ page }, use) => {
+    const playlistPage = new PlaylistPage(page);
+    await use(playlistPage);
   },
   // Optionally, expose the raw page instance
   pageInstance: async ({ page }, use) => {
     await use(page);
   },
+
   saveLogs: [async ({ }, use, testInfo) => {
     // Collecting logs during the test
     // const logs = [];
     // debug.log = (...args) => logs.push(args.map(String).join(''));
     // debug.enable('myserver');
+
     await use();
 
     // After the test, check whether the test passed or failed
