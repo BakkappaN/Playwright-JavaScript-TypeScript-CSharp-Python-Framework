@@ -47,3 +47,4 @@
 
 ## Playwright Important Commnands for daily use
 https://medium.com/@testerstalk/playwright-important-commands-for-daily-use-727a339b288e
+https://medium.com/@testerstalk/different-assertion-types-in-playwright-9784c2657253
