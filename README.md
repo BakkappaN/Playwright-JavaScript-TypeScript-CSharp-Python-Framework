@@ -39,12 +39,13 @@
 * Data Base Testing(MongoDB) with Playwright - https://medium.com/@testerstalk/integrating-mongodb-with-playwright-test-automation-data-base-testing-22e4bcee7595
   
 * Top 50 Playwright interview questions & answers - https://medium.com/@testerstalk/top-50-playwright-interview-questions-and-answers-6dff075c488e
+* Commands: https://medium.com/@testerstalk/playwright-important-commands-for-daily-use-727a339b288e
+* Assertions: https://medium.com/@testerstalk/different-assertion-types-in-playwright-9784c2657253
 
   
 ## Update Playwright to Latest Version
 1. npm install -D @playwright/test@latest
 2. npx playwright install --with-deps
 
-## Playwright Important Commnands for daily use
-* Commands: https://medium.com/@testerstalk/playwright-important-commands-for-daily-use-727a339b288e
-* Assertions: https://medium.com/@testerstalk/different-assertion-types-in-playwright-9784c2657253
+## Playwright daily use 
+
