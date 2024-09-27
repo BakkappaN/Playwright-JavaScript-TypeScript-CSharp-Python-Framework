@@ -1,4 +1,5 @@
 const fs = require('fs').promises;
+const path = require('path');
 
 // Function to read JSON file and get value by key
 export async function getValueFromJson(filePath, keyToRetrieve) {
@@ -23,5 +24,38 @@ export async function getValueFromJson(filePath, keyToRetrieve) {
         value = runtimetestdata[keyToRetrieve];
         return value;
     });
-    
+}
+
+/**
+ * Function to read and merge all JSON files for a given environment.
+ * @returns {Promise<object>} - Returns a promise that resolves to the merged JSON object.
+ */
+export async function loadTestData() {
+    const environment = process.env.ENV || 'qa';
+    const envDir = path.join(__dirname, `../test-data/`, environment);
+
+    // Check if the directory exists
+    try {
+        await fs.access(envDir); // Check for directory existence
+    } catch (err) {
+        throw new Error(`Directory does not exist for environment: ${environment}`);
+    }
+
+    const files = await fs.readdir(envDir);
+    const jsonData = {};
+
+    // Read and merge JSON files
+    for (const file of files) {
+        if (file.endsWith('.json')) {
+            const filePath = path.join(envDir, file);
+            const data = await fs.readFile(filePath, 'utf-8');
+            try {
+                const json = JSON.parse(data);
+                Object.assign(jsonData, json); // Merge the JSON data
+            } catch (parseError) {
+                throw new Error(`Error parsing JSON in file ${file}: ${parseError.message}`);
+            }
+        }
+    }
+    return jsonData;
 }

@@ -1,6 +1,5 @@
 // Include playwright module
 const { test, expect } = require('@playwright/test');
-import BaseTest from '../utils/basetest';
 
 const {_android} = require('playwright');
 

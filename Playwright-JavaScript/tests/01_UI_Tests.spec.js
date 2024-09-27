@@ -1,39 +1,29 @@
-const { test} = require('../fixtures/testfixture');
+const { test } = require('../fixtures/testfixture');
 const { expect } = require('@playwright/test');
 
 import path from "node:path";
 const xlsx = require('xlsx');
-import BaseTest from '../utils/basetest';
-
-const { HomePage } = require('../pages/homepage');
-const { ResultPage } = require('../pages/resultpage');
-const { PlaylistPage } = require('../pages/playlistpage');
 
 /**
  * Bakkappa N
  */
-test('[2] UI automation test using playwright', { tag: '@UITest' }, async ({ page }) => {
-
-    const baseTest = new BaseTest(page);
-    const homepage = new HomePage(page);
-    const resultpage = new ResultPage(page);
-    const playlistpage = new PlaylistPage(page);
+test('[2] UI automation test using playwright', { tag: '@UITest' }, async ({ page, testData, homePage, resultPage, playlistPage }) => {
 
     await test.step('Go to URL', async () => {
-        await baseTest.goto();
+        await homePage.goto();
     });
 
     await test.step('Search with keywords', async () => {
-        await homepage.searchKeywords(baseTest.testData.module1.skill1);
+        await homePage.searchKeywords(testData.module1.skill1);
     });
 
     await test.step('Click on playlist', async () => {
-        await resultpage.clickOnPlaylist();
+        await resultPage.clickOnPlaylist();
         await page.waitForTimeout(4000);
     });
 
     await test.step('Click on video', async () => {
-        await playlistpage.clickOnVideo();
+        await playlistPage.clickOnVideo();
         await page.waitForTimeout(8000);
     });
 })
