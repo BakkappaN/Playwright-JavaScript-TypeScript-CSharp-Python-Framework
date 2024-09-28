@@ -29,7 +29,7 @@
    [![Watch this video on YouTube](https://img.youtube.com/vi/Exx2M5Pz06g/hqdefault.jpg)](https://www.youtube.com/watch?v=Exx2M5Pz06g)
 
 
-## Important Playwright articles Links
+### Important Playwright articles Links
 * Update test case status automatically - https://medium.com/@testerstalk/integrate-azure-devops-test-plan-with-playwright-update-test-case-status-845b127f4b2b
   
 * Handling MFA(Multi Factor Authentication) in Playwright - https://medium.com/@testerstalk/how-to-automate-mfa-multi-factor-authentication-seamlessly-with-playwright-433f89be44a1
@@ -43,9 +43,8 @@
 * Assertions: https://medium.com/@testerstalk/different-assertion-types-in-playwright-9784c2657253
 
   
-## Update Playwright to Latest Version
+### Update Playwright to Latest Version
 1. npm install -D @playwright/test@latest
 2. npx playwright install --with-deps
 
-## Playwright daily use 
 
