@@ -18,9 +18,9 @@ exports.HomePage = class HomePage {
 
     async goto() {
         await this.page.setViewportSize({ width: 1366, height: 728 })
-        if (process.env.ENV.toUpperCase == 'QA') {
+        if (process.env.ENV.toUpperCase() == 'QA') {
             await this.page.goto(process.env.QA_URL);
-        } if (process.env.ENV.toUpperCase == 'STAGE') {
+        } else if (process.env.ENV.toUpperCase() == 'STAGE') {
             await this.page.goto(process.env.STAGING_URL);
         }
     }
