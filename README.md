@@ -14,7 +14,7 @@
 12. Logging
 13. Parallel Execution
     
-## Learn Complete Playwright - Youtube Playlist
+### Learn Complete Playwright - Youtube Playlist
 
 1. Playwright Tutorial Full Course - https://bit.ly/playwright-tutorial-automation-testing
    [![Watch this video on YouTube](https://img.youtube.com/vi/2poXBtifpzA/hqdefault.jpg)](https://www.youtube.com/watch?v=2poXBtifpzA)
