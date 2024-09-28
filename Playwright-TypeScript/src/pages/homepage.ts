@@ -1,5 +1,7 @@
 // Inlcude playwright module
 import { expect, type Locator, type Page } from '@playwright/test';
+import dotenv from 'dotenv';
+dotenv.config();
 
 // create class
 export class HomePage {
@@ -15,9 +17,13 @@ export class HomePage {
         this.searchTextbox = page.locator('#APjFqb');
     }
 
-    async goto(){
-        await this.page.setViewportSize({width:1366, height:728})
-        await this.page.goto('https://www.google.com');
+    async goto() {
+        await this.page.setViewportSize({ width: 1366, height: 728 })
+        if (String(process.env.ENV).toUpperCase() == 'QA') {
+            await this.page.goto(String(process.env.QA_URL));
+        } else if (String(process.env.ENV).toUpperCase() == 'STAGE') {
+            await this.page.goto(String(process.env.STAGING_URL));
+        }
     }
 
     async searchKeywords(param1:string){

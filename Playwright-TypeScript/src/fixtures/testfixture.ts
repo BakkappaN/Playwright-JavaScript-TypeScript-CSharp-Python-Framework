@@ -5,15 +5,17 @@ import { writeTestStatusToExcelFile } from '../utils/excelhandler';
 import { HomePage } from '../pages/homepage';
 import { PlaylistPage } from '../pages/playlistpage';
 import { ResultPage } from '../pages/resultpage';
-import BaseTest from '../utils/basetest';
 
+import { loadTestData } from '../utils/jsonhandler';
+
+import { TestData } from '../interfaces/testdata.interface';
 
 export const test = base.extend<{
   saveLogs: void;
   homePage: HomePage;
   playlistPage: PlaylistPage;
   resultPage: ResultPage;
-  baseTest: BaseTest;
+  testData: TestData;
 }>({
   saveLogs: [async ({ }, use, testInfo) => {
     // Collecting logs during the test.
@@ -42,15 +44,14 @@ export const test = base.extend<{
     const playlistPage = new PlaylistPage(page);
     await use(playlistPage);
   },
-  resultPage: async ({ page }, use) => {
-    const resultPage = new ResultPage(page);
+  resultPage: async ({ page, testData }, use) => {
+    const resultPage = new ResultPage(page, testData);
     await use(resultPage);
   },
-  baseTest: async ({ page }, use) => {
-    const baseTest = new BaseTest(page);
-    await use(baseTest);
+  testData: async ({ }, use) => {
+    const data = await loadTestData();
+    await use(data);
   }
-
 });
 
 export { expect } from '@playwright/test';

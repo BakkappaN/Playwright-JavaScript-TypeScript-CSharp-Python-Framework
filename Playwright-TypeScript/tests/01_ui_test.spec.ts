@@ -10,14 +10,14 @@ dotenv.config();
 /**
  * Bakkappa N
  */
-test('[2] UI automation test using playwright', { tag: '@UITest' }, async ({ page, baseTest, homePage, resultPage, playlistPage }) => {
+test('[2] UI automation test using playwright', { tag: '@UITest' }, async ({ page, testData, homePage, resultPage, playlistPage }) => {
 
     await test.step('Go to URL', async () => {
-        await baseTest.goto();
+        await homePage.goto();
     });
 
     await test.step('Search with keywords', async () => {
-        await homePage.searchKeywords(String(baseTest.testData.module1.skill1));
+        await homePage.searchKeywords(String(testData.module1?.skill1));
     });
 
     await test.step('Click on playlist', async () => {
@@ -34,7 +34,7 @@ test('[2] UI automation test using playwright', { tag: '@UITest' }, async ({ pag
 /**
  * Bakkappa N
  */
-test('[9, 12, 14] Verify excel data using playwright', { tag: '@ValidateExcel' }, async ({ page }) => {
+test('[9, 12, 14] Verify excel data using playwright', { tag: '@ValidateExcel' }, async ({ page, testData }) => {
     const filePath = path.resolve(__dirname, String(process.env.DOWNLOAD_PATH)).toString();
     const workbook = xlsx.readFile(filePath);
     const worksheet = workbook.Sheets[process.env.Sheet1 as string];
