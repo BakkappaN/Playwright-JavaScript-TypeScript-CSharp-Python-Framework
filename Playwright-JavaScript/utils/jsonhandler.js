@@ -59,3 +59,18 @@ export async function loadTestData() {
     }
     return jsonData;
 }
+
+// Utility function to read a JSON file asynchronously
+export async function readJsonFile(filename) {
+    const environment = process.env.ENV || 'qa';
+    const envDir = path.join(__dirname, `../test-data/`, environment);
+    const filePath = path.join(envDir, filename); // Construct the full path
+
+    try {
+        const data = await fs.readFile(filePath, 'utf-8'); // Read the file asynchronously
+        return JSON.parse(data); // Parse and return the JSON object
+    } catch (error) {
+        console.error('Error reading or parsing the file:', error);
+        return null; // Return null in case of an error
+    }
+}
