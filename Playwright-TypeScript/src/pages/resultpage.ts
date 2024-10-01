@@ -18,4 +18,9 @@ export class ResultPage {
         await expect(this.playlistlink.first()).toBeEnabled();
         await this.playlistlink.first().click();
     }
+    
+    async clickOnPlaylistLink(playlist:string) {
+        await expect(this.page.getByRole('link', { name: playlist }).first()).toBeEnabled();
+        await this.page.getByRole('link', { name: playlist }).first().click();
+    }
 }
