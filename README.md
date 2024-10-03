@@ -43,7 +43,7 @@
 * Assertions: https://medium.com/@testerstalk/different-assertion-types-in-playwright-9784c2657253
 
   
-### How to update Playwright to Latest Version
+### How to update Playwright to Latest Version?
 1. npm install -D @playwright/test@latest
 2. npx playwright install --with-deps
 
