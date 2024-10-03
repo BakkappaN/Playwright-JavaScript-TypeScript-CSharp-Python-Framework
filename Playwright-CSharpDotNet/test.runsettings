@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+	<RunConfiguration>
+		<!-- Specify the results directory -->
+		<ResultsDirectory>.\TestReport</ResultsDirectory>
+		<!-- Set the number of parallel test executions -->
+		<MaxCpuCount>4</MaxCpuCount>
+		<!-- Test execution timeout in milliseconds -->
+		<TestTimeout>60000</TestTimeout>
+	</RunConfiguration>
+
+	<Playwright>
+		<BrowserName>chromium</BrowserName>
+		<LaunchOptions>
+			<Headless>false</Headless>
+			<Channel>chromium</Channel>
+		</LaunchOptions>
+	</Playwright>
+
+	<NUnit>
+		<LogLevel>Info</LogLevel>
+	</NUnit>
+
+	<TestSettings>
+		<Timeouts>
+			<AssertionTimeout>20000</AssertionTimeout>
+			<ActionTimeout>20000</ActionTimeout>
+			<NavigationTimeout>20000</NavigationTimeout>
+		</Timeouts>
+	</TestSettings>
+
+</RunSettings>
