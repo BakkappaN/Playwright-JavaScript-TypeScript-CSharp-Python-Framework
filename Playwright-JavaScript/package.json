@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tests": "npx playwright test",
+    "MyTests": "npx playwright test --grep \"@UITest|@APITest|@UIDataDrivenTest\"",
     "ParaBank:Tests": "npx playwright test --grep ParaBankTest",
     "SQLDB:Tests": "npx playwright test --grep SQLDataBaseTest",
     "MongoDB:Tests": "npx playwright test --grep MongoDBTest",

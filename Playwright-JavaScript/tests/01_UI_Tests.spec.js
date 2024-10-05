@@ -18,7 +18,7 @@ test('[2] UI automation test using playwright', { tag: '@UITest' }, async ({ pag
     });
 
     await test.step('Click on playlist', async () => {
-        await resultPage.clickOnPlaylist();
+        await resultPage.clickOnPlaylist(testData.module1.skill1);
         await page.waitForTimeout(4000);
     });
 

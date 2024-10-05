@@ -1,15 +1,15 @@
 // Inlcude playwright module
-const { expect } = require('@playwright/test')
+const BasePage = require('./basepage');
+const { expect } = require('@playwright/test');
 
 // create class
-exports.ResultPage = class ResultPage {
+exports.ResultPage = class ResultPage extends BasePage {
     /**
      * 
      * @param {import ('@playwright/test').Page} page 
      */
     constructor(page, testData) {
-        // Init page object
-        this.page = page;
+        super(page);
 
         // Elements
         this.playlistlink = page.getByRole('link', { name: testData.module1.skill1 });
@@ -21,7 +21,8 @@ exports.ResultPage = class ResultPage {
     }
 
     async clickOnPlaylist(playlist) {
-        await expect(this.page.getByRole('link', { name: playlist }).first()).toBeEnabled();
-        await this.page.getByRole('link', { name: playlist }).first().click();
+        const link = this.page.getByRole('link', { name: playlist }).first();
+        await this.isElementEnabled(link)
+        await this.clickOnElement(link);
     }
 }
