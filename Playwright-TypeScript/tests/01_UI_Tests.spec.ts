@@ -10,7 +10,7 @@ dotenv.config();
 /**
  * Bakkappa N
  */
-test('[2] UI automation test using playwright', { tag: '@UITest' }, async ({ page, testData, homePage, resultPage, playlistPage }) => {
+test('[2] UI automation test using playwright', { tag: ['@UITest'] }, async ({ page, testData, homePage, resultPage, playlistPage }) => {
 
     await test.step('Go to URL', async () => {
         await homePage.goto();

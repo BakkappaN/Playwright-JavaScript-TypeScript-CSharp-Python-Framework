@@ -14,7 +14,7 @@ test.use({
 /**
  * Bakkappa N
  */
-test("End to End API testing using playwright", { tag: '@APITest' }, async ({ request }) => {
+test("End to End API testing using playwright", { tag: ['@APITest'] }, async ({ request }) => {
 
   let tokenNo = null;
 

@@ -7,7 +7,7 @@ import { module1 } from '../src/test-data/google.json';
  */
 for (const [key, value] of Object.entries(module1)) {
     // Write a test
-    test(`Data Driven Testing Test ${value}`, async ({ page, homePage, resultPage, playlistPage }) => {
+    test(`Data Driven Testing Test ${value}`, { tag: ['@APITest'] }, async ({ page, homePage, resultPage, playlistPage }) => {
         await test.step('Go to URL', async () => {
             await homePage.goto();
         });
