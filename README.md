@@ -14,7 +14,7 @@
 12. Logging
 13. Parallel Execution
     
-### Learn Complete Playwright - Youtube Playlist
+### Learn Complete Playwright from Scratch - Youtube Playlist
 
 1. Playwright Tutorial Full Course - https://bit.ly/playwright-tutorial-automation-testing
    [![Watch this video on YouTube](https://img.youtube.com/vi/2poXBtifpzA/hqdefault.jpg)](https://www.youtube.com/watch?v=2poXBtifpzA)
@@ -43,7 +43,7 @@
 * Assertions: https://medium.com/@testerstalk/different-assertion-types-in-playwright-9784c2657253
 
   
-### How to update Playwright to Latest Version
+### How to update Playwright to Latest Version?
 1. npm install -D @playwright/test@latest
 2. npx playwright install --with-deps
 
