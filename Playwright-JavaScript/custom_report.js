@@ -1,22 +1,30 @@
 const Logger = require('./utils/logger');
+//const { Reporter } = require('@playwright/test/reporter');
 
 const TEST_SEPARATOR = "##################";
 const STEP_SEPARATOR = "------------------";
 
-class CustomReporter {
+class CustomReporter { 
     constructor(options) {
         console.log(`${options.customOption} is enabled`);
+        this.totalTests = 0;
+        this.passedTests = 0;
+        this.failedTests = 0;
     }
 
     onTestBegin(test, result) {
         this.printLogs(`Test: ${test.title} - Started`, TEST_SEPARATOR);
+        this.totalTests++;
     }
 
     onTestEnd(test, result) {
         if (result.status === 'failed') {
+            this.passedTests++;
             const errorMessage = result.error ? result.error.stack : 'No error stack available';
             Logger.error(`Test: ${test.title} - ${result.status}\n${errorMessage}`);
-        }
+        } else if (result.status === 'failed') {
+            this.failedTests++;
+        }   
         this.printLogs(`Test: ${test.title} - ${result.status}`, TEST_SEPARATOR);
     }
 
@@ -48,6 +56,12 @@ class CustomReporter {
         Logger.error(`Message: ${error.message}`);
         Logger.error(`Stack: ${error.stack}`);
         Logger.error(`Value: ${error.value}`);
+    }
+
+    onEnd() {
+        console.log(`\nTotal Tests: ${this.totalTests}`);
+        console.log(`Passed: ${this.passedTests}`);
+        console.log(`Failed: ${this.failedTests}`);
     }
 
     printLogs(msg, separator) {
