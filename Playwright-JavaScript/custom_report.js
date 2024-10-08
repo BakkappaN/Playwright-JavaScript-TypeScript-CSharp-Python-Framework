@@ -19,11 +19,11 @@ class CustomReporter {
 
     onTestEnd(test, result) {
         if (result.status === 'failed') {
-            this.passedTests++;
+            this.failedTests++;
             const errorMessage = result.error ? result.error.stack : 'No error stack available';
             Logger.error(`Test: ${test.title} - ${result.status}\n${errorMessage}`);
-        } else if (result.status === 'failed') {
-            this.failedTests++;
+        } else if (result.status === 'passed') {
+            this.passedTests++;
         }   
         this.printLogs(`Test: ${test.title} - ${result.status}`, TEST_SEPARATOR);
     }

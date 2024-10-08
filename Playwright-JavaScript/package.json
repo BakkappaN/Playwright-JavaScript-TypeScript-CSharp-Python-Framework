@@ -19,7 +19,9 @@
   "devDependencies": {
     "@faker-js/faker": "^8.4.0",
     "@playwright/test": "^1.47.2",
-    "@types/node": "^20.11.16"
+    "@types/node": "^20.11.16",
+    "allure-commandline": "^2.30.0",
+    "allure-playwright": "^3.0.4"
   },
   "dependencies": {
     "@azure/identity": "^4.4.0",

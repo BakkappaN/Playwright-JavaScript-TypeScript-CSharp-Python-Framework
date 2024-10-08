@@ -7,3 +7,4 @@ node_modules/
 /e2e-junit-results.xml
 /Test_Case_Status.xlsx
 /README.md
+/allure-results
