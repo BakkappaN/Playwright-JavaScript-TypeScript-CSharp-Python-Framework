@@ -88,6 +88,10 @@ module.exports = defineConfig({
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
+    
+    // {
+    //   name: 'android-emulator'
+    // },
     {
       name: 'Google Chrome',
       use: {
