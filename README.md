@@ -3,16 +3,17 @@
 1. Updating Test Case Outcome in Test Plan Automatically
 2. UI Automation Testing
 3. API Testing
-4. DataBase Testing
-5. Page Object Model Design Pattern
-6. Data Driven Testing
-7. Run test based on different environments - QA, Staging, PROD etc
-8. Automating MFA(Multi Factor Authentication)
-9. Allure report
-10. Assertions or Validations
-11. Test Report
-12. Logging
-13. Parallel Execution
+4. Mobile App Testing
+5. DataBase Testing
+6. Page Object Model Design Pattern
+7. Data Driven Testing
+8. Run test based on different environments - QA, Staging, PROD etc
+9. Automating MFA(Multi Factor Authentication)
+10. Allure report
+11. Assertions or Validations
+12. Test Report
+13. Logging
+14. Parallel Execution
     
 ### Learn Complete Playwright from Scratch - Youtube Playlist
 
