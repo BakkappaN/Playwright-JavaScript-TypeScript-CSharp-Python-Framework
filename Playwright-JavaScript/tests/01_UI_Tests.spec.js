@@ -34,8 +34,11 @@ test('[2] UI automation test using playwright', { tag: '@UITest' }, async ({ pag
 test('[9, 12, 14] Verify excel data using playwright', { tag: '@ValidateExcel' }, async ({ page }) => {
     const filePath = path.join(__dirname, process.env.DOWNLOAD_PATH);
     const workbook = xlsx.readFile(filePath);
-    const worksheet = workbook.Sheets[process.env.Sheet1];
+    console.log(`Sheet name : ${process.env.SHEET1}`);
+
+    const worksheet = workbook.Sheets[process.env.SHEET1];
     const data = xlsx.utils.sheet_to_json(worksheet);
+    console.log(`Number of rows : ${data.length}`);
 
     expect(data.length).toBeGreaterThan(0);
     for (const row of data) {
