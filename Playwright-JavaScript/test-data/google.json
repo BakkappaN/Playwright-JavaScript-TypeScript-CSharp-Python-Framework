@@ -1,12 +1,7 @@
 {
     "module1": {
         "skill1": "Playwright by Testers Talk",
-        "skill2": "Cypress by Testers Talk",
-        "skill3": "JavaScript by Testers Talk",
-        "skill4": "Postman by Testers Talk",
-        "skill5": "Rest Assured by Testers Talk",
-        "skill6": "Specflow by Testers Talk",
-        "skill7": "EasyRepro by testers talk",
-        "skill8": "API Testing by Testers Talk"
+        "skill8": "API Testing by Testers Talk",
+        "skill2": "Cypress by Testers Talk"
     }
 }
