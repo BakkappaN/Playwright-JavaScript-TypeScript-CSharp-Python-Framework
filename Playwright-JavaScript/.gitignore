@@ -9,3 +9,5 @@ node_modules/
 /README.md
 /allure-results
 /logs
+/.DS_Store
+/execution.log
