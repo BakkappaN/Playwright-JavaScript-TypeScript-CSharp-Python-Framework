@@ -15,7 +15,7 @@
 13. Logging
 14. Parallel Execution
     
-# Learn Complete Playwright Automation with TypeScript & JavaScript(UI + API + Mocking + CI CD[Jenkins + GitHub, Azure DevOps Pipeline, GitHub Actions]) Full Course
+# Learn Complete Playwright Automation with TypeScript & JavaScript(UI + API + Mocking + CI CD[Jenkins + GitHub, Azure DevOps Pipeline, GitHub Actions] + Test Reports) Full Course
 ## [Part01 : Learn Playwright with TypeScript from Scratch](https://www.youtube.com/watch?v=788GvvcfwTY)
   [![Watch the video](https://img.youtube.com/vi/788GvvcfwTY/hqdefault.jpg)](https://www.youtube.com/watch?v=788GvvcfwTY)
 ## [Part02 : Learn Playwright with TypeScript from Scratch](https://www.youtube.com/watch?v=YfRazDhi9Fw)
