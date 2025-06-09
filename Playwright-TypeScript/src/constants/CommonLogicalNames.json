@@ -1,0 +1,11 @@
+{
+	"CommonLogicalNames": {
+		"Entity": {
+			"Account": "account",
+			"Contact": "contact"
+		},
+		"Fields": {
+			"Test": "test"
+		}
+	}
+}
