@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
 import { createAccountRecord, checkIfRecordIsPresent, deleteRecord, generateToken } from '../src/utils/crmapihelper';
 
+import { CommonLogicalNames } from '../src/constants/CommonLogicalNames.json';
+
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -23,6 +25,6 @@ test('Playwright with Dynamics CRM API Testing', { tag: ['@CRMAPITest'] }, async
     });
 
     await test.step('Delete a record', async () => {
-        await deleteRecord('account', recordGuid);
+        await deleteRecord(CommonLogicalNames.Entity.Account, recordGuid);
     });
 })
