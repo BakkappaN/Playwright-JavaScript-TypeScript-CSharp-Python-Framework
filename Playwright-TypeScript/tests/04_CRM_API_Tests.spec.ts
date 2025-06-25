@@ -1,5 +1,8 @@
 import { test, expect } from "@playwright/test";
-import { createAccountRecord, checkIfRecordIsPresent, deleteRecord, generateToken } from '../src/utils/crmapihelper';
+import {
+    createAccountRecord, checkIfRecordIsPresent,
+    deleteRecord, generateToken, updateRecordStateToActive
+} from '../src/utils/crmapihelper';
 
 import { CommonLogicalNames } from '../src/constants/CommonLogicalNames.json';
 
@@ -22,6 +25,10 @@ test('Playwright with Dynamics CRM API Testing', { tag: ['@CRMAPITest'] }, async
 
     await test.step('Verify the record', async () => {
         await checkIfRecordIsPresent('account', recordGuid, token, apiBaseURL);
+    });
+
+    await test.step('Update record state to Active', async () => {
+        await updateRecordStateToActive('account', recordGuid, token, apiBaseURL);
     });
 
     await test.step('Delete a record', async () => {

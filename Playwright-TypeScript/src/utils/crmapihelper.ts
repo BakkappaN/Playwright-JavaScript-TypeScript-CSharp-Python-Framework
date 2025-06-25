@@ -21,9 +21,23 @@ export async function createAccountRecord(token: string): Promise<string> {
         const email = AccountLogicalNames.Email;
 
         const Account = {
+            // Text boxes
             [name]: 'Testers Talk',
             [number]: '1345679',
-            [email]: 'test@email.com'
+            [email]: 'test@email.com',
+
+            // Lookup field - ends with @odata.bind
+            // Usually we will get 4 property if open record in levelup extn. for lookup
+            // Somthing like this - Which ends with .FormattedValue, .assiciationnavigationproperty, .lookuplogicalname, _value
+            // Example: "assiciationnavigationproperty-Value.@odata.bind":"lookuplogicalname-Value-Add-s(_value)"
+            "lookup_logicalname@odata.bind": "/accounts('asjkldjf-23j4h2l3-lhajklha-yast872')",
+
+            // Option set field - integer value of optionset, we can get this value from level up extension
+            optionset_logicalname: 1,
+
+            // Flag - true or false
+            logical_name: true
+
         }
 
         const apiURL = `${apiBaseURL}` + CommonLogicalNames.Entity.Account;
@@ -147,6 +161,56 @@ export async function generateToken(apiBaseURL: string): Promise<string> {
         console.error(`Deatils:`, error.response?.data?.error || error.response?.data);
         throw error;
     }
+}
+
+/**
+ * Author: Testers Talk
+ */
+export async function updateRecordStateToActive(entity: string, recordGuid: string, token: string, apiBaseURL: string): Promise<void> {
+    const clientId = `${process.env.AZURE_CLIENT_ID} `; // Your client ID
+    const clientSecret = `${process.env.AZURE_CLIENT_SECRET} `; // Your client secret
+    const tenantId = `${process.env.AZURE_TENANT_ID} `; // Your tenant ID
+
+    const patchURL = `${apiBaseURL}` + `${entity}(${recordGuid})`;
+    const patchAPIHeaders = await getHeadersForUpdatingRecordState(token);
+
+    if (!apiBaseURL || !clientId || !clientSecret || !tenantId) {
+        throw new Error("Environment variables for CRM API are not set properly.");
+    }
+
+    try {
+        const patchResponse = await axios.patch(patchURL,
+            {
+                statecode: 0,
+                statuscode: 1
+            },
+            {
+                headers: patchAPIHeaders
+            });
+        expect(patchResponse.status).toBe(204);
+        expect(patchResponse.statusText).toBe('No Content');
+        console.log(`Record ${recordGuid} updated successfully`);
+    } catch (error: any) {
+        console.error(`Error while deleting record: ${recordGuid}`);
+        console.error(`Request failed with status :`, error.response?.status);
+        console.error(`Deatils:`, error.response?.data?.error || error.response?.data);
+        throw error;
+    }
+
+}
+
+/**
+ * Author: Testers Talk
+ */
+export async function getHeadersForUpdatingRecordState(token: string): Promise<Record<string, string>> {
+    return {
+        Authorization: token,
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'OData-MaxVersion': '4.0',
+        'OData-Version': '4.0',
+        'If-Match': '*',
+    };
 }
 
 /**
